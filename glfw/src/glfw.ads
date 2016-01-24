@@ -77,7 +77,7 @@ package GLFW is
 
    for Hint_Value'Size use int'Size;
 
-   procedure Set_Hint (Target : Hint_Target; Value : Hint_Value) with
+   procedure Set (Target : Hint_Target; Value : Hint_Value) with
      Import,
      Convention => C,
      External_Name => "glfwWindowHint";
