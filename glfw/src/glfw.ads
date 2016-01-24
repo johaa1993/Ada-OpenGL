@@ -1,9 +1,13 @@
-with Interfaces.C; use Interfaces.C;
-with Interfaces.C.Strings; use Interfaces.C.Strings;
-with System; use System;
-with System.Storage_Elements; use System.Storage_Elements;
+with Interfaces.C;
+with Interfaces.C.Strings;
+with System;
+
 
 package GLFW is
+
+   use Interfaces.C;
+   use Interfaces.C.Strings;
+   use System;
 
 
    type Window is new Address;
@@ -122,7 +126,7 @@ package GLFW is
 
 
 
-   type Close_Flag is new Int;
+   type Close_Flag is new int;
 
    -- http://www.glfw.org/docs/latest/group__window.html#ga24e02fbfefbb81fc45320989f8140ab5
    function Closing (W : Window) return Close_Flag with
@@ -145,15 +149,7 @@ package GLFW is
 
 
 
-   type Drop_Procedure is not null access procedure (W : Window; Count : int; Paths : chars_ptr_array ) with
-     Convention => C;
 
-
-   procedure Set_Drop_Callback (W : Window; P : Drop_Procedure) with
-     Import,
-     Convention => C,
-     External_Name => "glfwSetDropCallback",
-     Pre => W /= Null_Window;
 
 
 

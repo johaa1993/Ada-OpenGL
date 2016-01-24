@@ -1,4 +1,8 @@
+with System.Storage_Elements;
+
 package GLFW.APIs is
+
+   use System.Storage_Elements;
 
    type API is new Address;
 
