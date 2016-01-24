@@ -103,20 +103,7 @@ package GLFW is
 
 
 
-   type API is new Address;
 
-   API_Null : constant API := API (Null_Address);
-   API_No_Current_Context : constant API := API (To_Address (16#00010002#));
-
-   pragma Warnings (Off);
-   function Get (Name : char_array) return API with
-     Import,
-     Convention => C,
-     External_Name => "glfwGetProcAddress",
-     Post =>
-       Get'Result /= API_Null or
-       Get'Result /= API_No_Current_Context;
-   pragma Warnings (On);
 
 
    -- This function initializes the GLFW library.
