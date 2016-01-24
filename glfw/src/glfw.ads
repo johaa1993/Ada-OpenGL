@@ -9,7 +9,6 @@ package GLFW is
    use Interfaces.C.Strings;
    use System;
 
-
    type Window is new Address;
    Null_Window : Window := Window (Null_Address);
 
@@ -63,21 +62,10 @@ package GLFW is
 
    for Hint_Target'Size use int'Size;
 
-   type Hint_Value is
-     (
-      Hint_Value_False,
-      Hint_Value_True
-     );
 
-   for Hint_Value use
-     (
-      Hint_Value_False => 0,
-      Hint_Value_True => 1
-     );
+   type Hint is new int;
 
-   for Hint_Value'Size use int'Size;
-
-   procedure Set (Target : Hint_Target; Value : Hint_Value) with
+   procedure Set (Target : Hint_Target; Value : Hint) with
      Import,
      Convention => C,
      External_Name => "glfwWindowHint";

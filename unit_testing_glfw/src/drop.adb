@@ -33,7 +33,6 @@ begin
 
    Initialize;
 
-   Set (Hint_Target_Decorated, Hint_Value_False);
    W := Create (400, 400, To_C ("Hello"));
    Make_Context_Current (W);
 
