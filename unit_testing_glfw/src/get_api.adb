@@ -16,13 +16,12 @@ procedure Get_API is
 
    A : API;
    W : Window;
-   I : int;
 
 begin
 
-   I := Initialize;
+   Initialize;
 
-   W := Create (400, 400, To_C ("Hello"));
+   --W := Create (400, 400, To_C ("Hello"));
    Make_Context_Current (W);
 
    A := Get ("glVertexAttribPointer");

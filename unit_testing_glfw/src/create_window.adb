@@ -13,12 +13,13 @@ procedure Create_Window is
    use GLFW;
    use GLFW.Keys;
    W : Window;
-   I : int;
    K : Key_Status;
    X : Mouse_X;
    Y : Mouse_Y;
 begin
-   I := Initialize;
+
+   Initialize;
+
    W := Create (400, 400, To_C ("Hello"));
    Make_Context_Current (W);
    loop
