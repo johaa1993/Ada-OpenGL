@@ -46,6 +46,4 @@ begin
       pragma Warnings (On);
    end loop;
 
-   null;
-
 end;

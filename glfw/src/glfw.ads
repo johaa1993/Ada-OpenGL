@@ -31,6 +31,13 @@ package GLFW is
      Post => Create'Result /= Null_Window;
    pragma Warnings (On);
 
+
+   -- This function makes the OpenGL or OpenGL ES context of the specified window current on the calling thread.
+   -- A context can only be made current on a single thread at a time and
+   -- each thread can have only a single current context at a time.
+   -- By default, making a context non-current implicitly forces a pipeline flush.
+   -- On machines that support GL_KHR_context_flush_control,
+   -- you can control whether a context performs this flush by setting the GLFW_CONTEXT_RELEASE_BEHAVIOR window hint.
    procedure Make_Context_Current (W : Window) with
      Import,
      Convention => C,
