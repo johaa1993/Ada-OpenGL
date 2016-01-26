@@ -4,6 +4,7 @@ with GLFW.Drops;
 with Ada.Text_IO;
 with Ada.Integer_Text_IO;
 with Interfaces.C.Strings;
+with GLFW.Windows;
 
 procedure Drop is
 
@@ -11,6 +12,7 @@ procedure Drop is
    use Interfaces.C;
    use GLFW;
    use GLFW.Drops;
+   use GLFW.Windows;
 
    pragma Warnings (Off);
    procedure Dropped (W : Window; Count : int; Paths : chars_ptr_array) with Convention => C;

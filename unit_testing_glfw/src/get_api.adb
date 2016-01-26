@@ -3,6 +3,7 @@ with System.Address_Image;
 with GLFW;
 with GLFW.APIs;
 with Ada.Text_IO;
+with GLFW.Windows;
 
 
 procedure Get_API is
@@ -12,6 +13,7 @@ procedure Get_API is
    use Ada.Text_IO;
    use GLFW;
    use GLFW.APIs;
+   use GLFW.Windows;
 
    A : API;
    W : Window;
