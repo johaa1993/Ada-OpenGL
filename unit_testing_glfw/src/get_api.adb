@@ -27,4 +27,6 @@ begin
 
    Put_Line (Address_Image (A));
 
+   Destroy (W);
+
 end;

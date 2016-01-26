@@ -41,4 +41,6 @@ begin
       pragma Warnings (On);
    end loop;
 
+   Destroy (W);
+
 end;
