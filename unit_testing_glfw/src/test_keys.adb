@@ -1,5 +1,6 @@
 with GLFW;
 with GLFW.Keys;
+with GLFW.Windows;
 with Interfaces.C;
 with Ada.Text_IO;
 
@@ -8,6 +9,7 @@ procedure Test_Keys is
 
    use GLFW;
    use GLFW.Keys;
+   use GLFW.Windows;
    use Interfaces.C;
    use Ada.Text_IO;
 

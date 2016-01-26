@@ -1,4 +1,8 @@
+with Interfaces.C;
+
 package body GLFW is
+
+   use Interfaces.C;
 
    -- This function initializes the GLFW library.
    -- Before most GLFW functions can be used, GLFW must be initialized, and before an application terminates GLFW should be terminated in order to free any resources allocated during or after initialization.

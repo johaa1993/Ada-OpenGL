@@ -1,10 +1,12 @@
 with GLFW;
+with GLFW.Windows;
 with Interfaces.C;
 
 
 procedure Create_Window is
 
    use GLFW;
+   use GLFW.Windows;
    use Interfaces.C;
 
    W : Window;

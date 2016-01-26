@@ -1,7 +1,13 @@
+with GLFW.Windows;
+with Interfaces.C;
+
 package GLFW.Mouses is
 
-   type Mouse_X is new Double;
-   type Mouse_Y is new Double;
+   use Interfaces.C;
+   use GLFW.Windows;
+
+   type Mouse_X is new double;
+   type Mouse_Y is new double;
 
    procedure Get (W : Window; X : out Mouse_X; Y : out Mouse_Y) with
      Import,

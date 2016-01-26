@@ -1,6 +1,7 @@
 with GLFW;
 with GLFW.Keys;
 with GLFW.Mouses;
+with GLFW.Windows;
 with Interfaces.C;
 with Ada.Text_IO;
 with Ada.Float_Text_IO;
@@ -11,6 +12,7 @@ procedure Test_Mouse is
    use GLFW;
    use GLFW.Keys;
    use GLFW.Mouses;
+   use GLFW.Windows;
 
    use Interfaces.C;
 

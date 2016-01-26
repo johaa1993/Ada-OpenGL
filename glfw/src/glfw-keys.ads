@@ -1,4 +1,10 @@
+with Interfaces.C;
+with GLFW.Windows;
+
 package GLFW.Keys is
+
+   use GLFW.Windows;
+   use Interfaces.C;
 
    type Action is
      (
