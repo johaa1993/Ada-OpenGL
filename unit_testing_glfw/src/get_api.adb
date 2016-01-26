@@ -13,7 +13,6 @@ procedure Get_API is
    use GLFW;
    use GLFW.APIs;
 
-
    A : API;
    W : Window;
 
@@ -21,12 +20,11 @@ begin
 
    Initialize;
 
-   --W := Create (400, 400, To_C ("Hello"));
+   W := Create (400, 400, To_C ("Hello"));
    Make_Context_Current (W);
 
    A := Get ("glVertexAttribPointer");
 
    Put_Line (Address_Image (A));
 
-   null;
 end;
