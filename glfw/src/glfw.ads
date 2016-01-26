@@ -53,32 +53,6 @@ package GLFW is
 
 
 
-
-
-   type Hint_Target is
-     (
-      Hint_Target_Visible,
-      Hint_Target_Decorated
-     );
-
-   for Hint_Target use
-     (
-      Hint_Target_Visible => 16#00020004#,
-      Hint_Target_Decorated => 16#00020005#
-     );
-
-   for Hint_Target'Size use int'Size;
-
-
-   type Hint is new int;
-
-   procedure Set (Target : Hint_Target; Value : Hint) with
-     Import,
-     Convention => C,
-     External_Name => "glfwWindowHint";
-
-
-
    procedure Initialize;
 
 
