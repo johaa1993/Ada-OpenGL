@@ -1,1 +1,1 @@
-procedure GL.Init ( Load : access function (Name : String) return System.Address );
+procedure GL.Init (Load : access function (Name : String) return System.Address);
