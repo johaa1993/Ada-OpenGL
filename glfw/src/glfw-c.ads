@@ -1,15 +1,18 @@
 with System;
+with System.Storage_Elements;
 with Interfaces.C;
 with Interfaces.C.Strings;
 
 package GLFW.C is
 
    use System;
+   use System.Storage_Elements;
    use Interfaces.C;
    use Interfaces.C.Strings;
 
    subtype GLFWwindow is Address;
    subtype GLFWmonitor is Address;
+   subtype GLFWglproc is Address;
 
    type GLFWvidmode is record
       Width        : int;
@@ -114,5 +117,14 @@ package GLFW.C is
      Import,
      Convention => C,
      External_Name => "glfwSetDropCallback";
+
+   --pragma Warnings (Off);
+   function glfwGetProcAddress (Name : char_array) return GLFWglproc with
+     Import,
+     Convention => C,
+     External_Name => "glfwGetProcAddress";
+   --pragma Warnings (On);
+
+   GLFW_NO_CURRENT_CONTEXT : constant GLFWglproc := To_Address (16#00010002#);
 
 end;

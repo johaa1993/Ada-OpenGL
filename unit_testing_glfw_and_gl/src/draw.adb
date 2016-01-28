@@ -24,14 +24,13 @@ procedure Draw is
 
    procedure Initialize_OpenGL is
       use System;
-      use GLFW.APIs;
       use GL;
       function Loader (Name : String) return Address is
          use Ada.Text_IO;
-         A : API := Get (To_C (Name));
+         use GLFW.APIs;
       begin
          Put_Line (Name);
-         return Address (A);
+         return Get (Name);
       end;
    begin
       Init (Loader'Access);

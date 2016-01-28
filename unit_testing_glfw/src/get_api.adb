@@ -18,7 +18,7 @@ procedure Get_API is
    use GLFW.APIs;
    use GLFW.Initializations;
 
-   A : API;
+   A : Address;
    W : Window;
 
 begin
