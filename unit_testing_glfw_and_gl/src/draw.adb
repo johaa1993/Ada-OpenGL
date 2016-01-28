@@ -1,6 +1,6 @@
 with GL.C.Complete;
 with GL.C.Initializations;
-
+with GL.Programs.Shaders;
 
 with GLFW.Displays;
 with GLFW.Displays.Windows;
@@ -23,6 +23,8 @@ procedure Draw is
    use GLFW.Displays.Windows;
    use GLFW.Initializations;
    use GLFW.Events;
+
+   use GL.Programs.Shaders;
 
    use Interfaces.C;
 
@@ -49,6 +51,7 @@ procedure Draw is
 
    W : Window;
 
+
 begin
 
 
@@ -58,6 +61,14 @@ begin
    Make_Context_Current (W);
 
    Initialize_OpenGL;
+
+   declare
+      S : Shader := Create;
+   begin
+      null;
+   end;
+
+
 
    loop
       GLFW.Events.Poll;
