@@ -7,7 +7,7 @@ package GL.Programs is
    type Program (<>) is private;
 
    function Create return Program;
-
+   procedure Link (P : Program);
 
 private
 

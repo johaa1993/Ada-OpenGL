@@ -18,16 +18,6 @@ with Ada.Strings.Fixed;
 
 procedure Draw is
 
-   use GLFW;
-   use GLFW.Displays;
-   use GLFW.Displays.Windows;
-   use GLFW.Initializations;
-   use GLFW.Events;
-
-   use GL.Programs.Shaders;
-
-   use Interfaces.C;
-
    procedure Initialize_OpenGL is
 
       use System;
@@ -49,34 +39,43 @@ procedure Draw is
    end;
 
 
-   W : Window;
+   W : GLFW.Displays.Window;
 
 
 begin
 
+   declare
+      use GLFW.Displays.Windows;
+      use GLFW.Initializations;
+      use Interfaces.C;
+   begin
+      Initialize;
+      W := Create (400, 400, To_C ("Hello"));
+      Make_Context_Current (W);
+      Initialize_OpenGL;
+   end;
 
-   GLFW.Initializations.Initialize;
-
-   W := Create (400, 400, To_C ("Hello"));
-   Make_Context_Current (W);
-
-   Initialize_OpenGL;
 
    declare
-      S : Shader := Create;
+      use GL.Programs.Shaders;
+      S : Shader := Create (Vertex);
    begin
       null;
    end;
 
 
+   declare
+      use GLFW.Displays.Windows;
+      use GLFW.Events;
+   begin
+      loop
+         Poll;
+         pragma Warnings (Off);
+         exit when Closing (W) = 1;
+         pragma Warnings (On);
+      end loop;
+      Destroy (W);
+   end;
 
-   loop
-      GLFW.Events.Poll;
-      pragma Warnings (Off);
-      exit when Closing (W) = 1;
-      pragma Warnings (On);
-   end loop;
-
-   Destroy (W);
 
 end;
