@@ -9,7 +9,6 @@ with Interfaces.C;
 with Interfaces.C.Strings;
 with Ada.Text_IO;
 with Ada.Integer_Text_IO;
-with GLFW.C; use GLFW.C;
 
 
 
