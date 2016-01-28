@@ -1,6 +1,9 @@
 with GLFW;
-with GLFW.Keys;
-with GLFW.Windows;
+with GLFW.Displays;
+with GLFW.Displays.Windows;
+with GLFW.Displays.Windows.Keys;
+with GLFW.Initializations;
+with GLFW.Events;
 with Interfaces.C;
 with Ada.Text_IO;
 
@@ -8,10 +11,16 @@ with Ada.Text_IO;
 procedure Test_Keys is
 
    use GLFW;
-   use GLFW.Keys;
-   use GLFW.Windows;
+
    use Interfaces.C;
    use Ada.Text_IO;
+   use GLFW;
+   use GLFW.Displays;
+   use GLFW.Displays.Windows;
+   use GLFW.Displays.Windows.Keys;
+   use GLFW.Initializations;
+   use GLFW.Events;
+
 
    W : Window;
    K : Action;
@@ -24,7 +33,7 @@ begin
    Make_Context_Current (W);
 
    loop
-      Wait_Events;
+      Wait;
 
       K := Get (W, Key_Enter);
       Put_Line (K'Img);

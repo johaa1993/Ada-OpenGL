@@ -1,12 +1,19 @@
 with GLFW;
-with GLFW.Windows;
-with Interfaces.C;
+with GLFW.Displays;
+with GLFW.Displays.Windows;
+with GLFW.Initializations;
+with GLFW.Events;
 
+with Interfaces.C;
 
 procedure Create_Window is
 
    use GLFW;
-   use GLFW.Windows;
+   use GLFW.Displays;
+   use GLFW.Displays.Windows;
+   use GLFW.Initializations;
+   use GLFW.Events;
+
    use Interfaces.C;
 
    W : Window;
@@ -19,7 +26,7 @@ begin
    Make_Context_Current (W);
 
    loop
-      Wait_Events;
+      Wait;
       pragma Warnings (Off);
       exit when Closing (W) = 1;
       pragma Warnings (On);

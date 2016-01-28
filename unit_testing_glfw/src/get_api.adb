@@ -1,10 +1,11 @@
 with Interfaces.C;
 with System.Address_Image;
-with GLFW;
-with GLFW.APIs;
 with Ada.Text_IO;
-with GLFW.Windows;
-
+with GLFW;
+with GLFW.Displays;
+with GLFW.Displays.Windows;
+with GLFW.APIs;
+with GLFW.Initializations;
 
 procedure Get_API is
 
@@ -12,8 +13,10 @@ procedure Get_API is
    use System;
    use Ada.Text_IO;
    use GLFW;
+   use GLFW.Displays;
+   use GLFW.Displays.Windows;
    use GLFW.APIs;
-   use GLFW.Windows;
+   use GLFW.Initializations;
 
    A : API;
    W : Window;

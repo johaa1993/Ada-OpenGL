@@ -1,24 +1,10 @@
-with Interfaces.C;
-with GLFW.Windows;
-
-package GLFW.Keys is
-
-   use GLFW.Windows;
-   use Interfaces.C;
+package GLFW.Displays.Windows.Keys is
 
    type Action is
      (
-      Action_Release,
-      Action_Press
+      Release,
+      Press
      );
-   for Action use
-     (
-      Action_Release => 0,
-      Action_Press => 1
-     );
-   for Action'Size use int'Size;
-   pragma Convention (C, Action);
-
 
    type Key is
      (
@@ -144,6 +130,20 @@ package GLFW.Keys is
       Key_Right_Super,
       Key_Menu
      );
+
+
+   function Get (W : Window; A : Key) return Action;
+
+private
+
+   for Action use
+     (
+      Release => 0,
+      Press => 1
+     );
+   for Action'Size use int'Size;
+   pragma Convention (C, Action);
+
    for Key use
      (
       Key_Unknown       => -1,
@@ -270,13 +270,5 @@ package GLFW.Keys is
      );
    for Key'Size use int'Size;
    pragma Convention (C, Key);
-
-   function Get (W : Window; K : Key) return Action with
-     Import,
-     Convention => C,
-     External_Name => "glfwGetKey",
-     Pre => W /= Null_Window;
-
-
 
 end;

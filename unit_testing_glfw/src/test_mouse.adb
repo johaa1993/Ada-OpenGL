@@ -1,7 +1,10 @@
 with GLFW;
-with GLFW.Keys;
-with GLFW.Mouses;
-with GLFW.Windows;
+with GLFW.Displays;
+with GLFW.Displays.Windows;
+with GLFW.Displays.Windows.Cursors;
+with GLFW.Initializations;
+with GLFW.Events;
+
 with Interfaces.C;
 with Ada.Text_IO;
 with Ada.Float_Text_IO;
@@ -10,12 +13,13 @@ with Ada.Float_Text_IO;
 procedure Test_Mouse is
 
    use GLFW;
-   use GLFW.Keys;
-   use GLFW.Mouses;
-   use GLFW.Windows;
+   use GLFW.Displays;
+   use GLFW.Displays.Windows;
+   use GLFW.Displays.Windows.Cursors;
+   use GLFW.Initializations;
+   use GLFW.Events;
 
    use Interfaces.C;
-
    use Ada.Text_IO;
    use Ada.Float_Text_IO;
 
@@ -31,7 +35,7 @@ begin
    Make_Context_Current (W);
 
    loop
-      Wait_Events;
+      Wait;
 
       Get (W, X, Y);
       Put (Float (X), 6, 3, 0);

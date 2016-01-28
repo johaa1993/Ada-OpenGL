@@ -1,22 +1,28 @@
 with GLFW;
-with GLFW.Keys;
-with GLFW.Mouses;
-with GLFW.Windows;
+with GLFW.Displays;
+with GLFW.Displays.Windows;
+with GLFW.Displays.Monitors;
+with GLFW.Initializations;
+with GLFW.Events;
+
+
 with Interfaces.C;
 with Ada.Text_IO;
 with Ada.Float_Text_IO;
 with Ada.Integer_Text_IO;
 with Ada.Strings.Fixed;
-with GLFW.Monitors;
+
 
 
 procedure Test_Monitor is
 
+
    use GLFW;
-   use GLFW.Keys;
-   use GLFW.Mouses;
-   use GLFW.Windows;
-   use GLFW.Monitors;
+   use GLFW.Displays;
+   use GLFW.Displays.Windows;
+   use GLFW.Displays.Monitors;
+   use GLFW.Initializations;
+   use GLFW.Events;
 
    use Interfaces.C;
 
@@ -27,7 +33,7 @@ procedure Test_Monitor is
 
    --W : Window;
    M : Monitor;
-   V : Video_Mode_Access;
+   V : Video_Mode;
 
 begin
 

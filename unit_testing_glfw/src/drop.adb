@@ -1,18 +1,30 @@
-with Interfaces.C;
 with GLFW;
-with GLFW.Drops;
+with GLFW.Displays;
+with GLFW.Displays.Windows;
+with GLFW.Displays.Windows.Drops;
+with GLFW.Initializations;
+with GLFW.Events;
+
+with Interfaces.C;
+with Interfaces.C.Strings;
 with Ada.Text_IO;
 with Ada.Integer_Text_IO;
-with Interfaces.C.Strings;
-with GLFW.Windows;
+with GLFW.C; use GLFW.C;
+
+
 
 procedure Drop is
 
    use Interfaces.C.Strings;
    use Interfaces.C;
+
    use GLFW;
-   use GLFW.Drops;
-   use GLFW.Windows;
+   use GLFW.Displays;
+   use GLFW.Displays.Windows;
+   use GLFW.Displays.Windows.Drops;
+   use GLFW.Initializations;
+   use GLFW.Events;
+
 
    pragma Warnings (Off);
    procedure Dropped (W : Window; Count : int; Paths : chars_ptr_array) with Convention => C;
@@ -22,6 +34,7 @@ procedure Drop is
       use Ada.Text_IO;
       use Ada.Integer_Text_IO;
    begin
+      Put_Line ("Dropped");
       Put (Integer (Count), 4);
       New_Line;
       for I in 0 .. Count - 1 loop
@@ -31,8 +44,11 @@ procedure Drop is
 
    W : Window;
 
+   use Ada.Text_IO;
+
 begin
 
+   Put_Line ("Initialize");
    Initialize;
 
    W := Create (400, 400, To_C ("Hello"));
@@ -41,8 +57,7 @@ begin
    Set (W, Dropped'Unrestricted_Access);
 
    loop
-      --Poll_Events;
-      Wait_Events;
+      Wait;
       pragma Warnings (Off);
       exit when Closing (W) = 1;
       pragma Warnings (On);
