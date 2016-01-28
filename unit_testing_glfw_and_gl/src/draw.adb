@@ -1,15 +1,20 @@
-with GL;
-with GL.Init;
-with GLFW;
+with GL.C.Complete;
+with GL.C.Initializations;
+
+
 with GLFW.Displays;
 with GLFW.Displays.Windows;
 with GLFW.APIs;
 with GLFW.Initializations;
 with GLFW.Events;
-with Interfaces.C;
-with System;
-with Ada.Text_IO;
 
+with Interfaces.C;
+
+with System;
+with System.Address_Image;
+
+with Ada.Text_IO;
+with Ada.Strings.Fixed;
 
 procedure Draw is
 
@@ -18,23 +23,31 @@ procedure Draw is
    use GLFW.Displays.Windows;
    use GLFW.Initializations;
    use GLFW.Events;
+
    use Interfaces.C;
 
-   W : Window;
-
    procedure Initialize_OpenGL is
+
       use System;
-      use GL;
+      use GL.C.Initializations;
+
       function Loader (Name : String) return Address is
          use Ada.Text_IO;
-         use GLFW.APIs;
+         use Ada.Strings.Fixed;
+         A : Address := GLFW.APIs.Get (Name);
       begin
-         Put_Line (Name);
-         return Get (Name);
+         Put (Head (Name, 30));
+         Put (Address_Image (A));
+         New_Line;
+         return A;
       end;
+
    begin
-      Init (Loader'Access);
+      Initialize (Loader'Unrestricted_Access);
    end;
+
+
+   W : Window;
 
 begin
 
