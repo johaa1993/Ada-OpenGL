@@ -22,6 +22,10 @@ package GL.C is
    subtype GLubyte      is unsigned_char;
    subtype GLvoid       is Address;
    subtype GLchar       is char;
-   subtype GLchar_array is char_array;
+
+   -- Specials
+   type GLintv          is array (size_t range <>) of aliased int with Convention => C;
+   subtype GLstring     is char_array;
+   subtype GLstringv    is chars_ptr_array;
 
 end;

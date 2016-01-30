@@ -8,7 +8,16 @@ package GL.C.Complete is
    GL_FRAGMENT_SHADER      : constant := 16#8B30#;
    GL_VERTEX_SHADER        : constant := 16#8B31#;
    GL_GEOMETRY_SHADER      : constant := 16#8DD9#;
+
+
+   GL_SHADER_TYPE          : constant := 16#8B4F#;
+   GL_DELETE_STATUS        : constant := 16#8B80#;
    GL_COMPILE_STATUS       : constant := 16#8B81#;
+   GL_INFO_LOG_LENGTH      : constant := 16#8B84#;
+   GL_SHADER_SOURCE_LENGTH : constant := 16#8B88#;
+
+
+
    GL_LINK_STATUS          : constant := 16#8B82#;
    GL_ARRAY_BUFFER         : constant := 16#8892#;
    GL_ELEMENT_ARRAY_BUFFER : constant := 16#8893#;

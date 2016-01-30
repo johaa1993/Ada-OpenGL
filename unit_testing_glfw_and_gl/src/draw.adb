@@ -1,6 +1,7 @@
 with GL.C.Complete;
 with GL.C.Initializations;
 with GL.Programs.Shaders;
+with GL.Programs.Shaders.Files;
 
 with GLFW.Displays;
 with GLFW.Displays.Windows;
@@ -15,6 +16,7 @@ with System.Address_Image;
 
 with Ada.Text_IO;
 with Ada.Strings.Fixed;
+with Ada.Exceptions;
 
 procedure Draw is
 
@@ -53,15 +55,30 @@ begin
       W := Create (400, 400, To_C ("Hello"));
       Make_Context_Current (W);
       Initialize_OpenGL;
+
+      declare
+         use Ada.Text_IO;
+         use Ada.Exceptions;
+         use GL.Programs;
+         use GL.Programs.Shaders;
+         use GL.Programs.Shaders.Files;
+         P : Program := Create;
+         S : Shader := Create (Vertex_Shade);
+         F : File_Name := "test.glfs";
+      begin
+         Compile (S, F);
+         Attach (P, S);
+      exception
+         when Error : others =>
+            Put_Line ("Exception:");
+            Put_Line (Exception_Information (Error));
+            Put_Line (String (Compile_Log (S)));
+      end;
+
    end;
 
 
-   declare
-      use GL.Programs.Shaders;
-      S : Shader := Create (Vertex);
-   begin
-      null;
-   end;
+
 
 
    declare

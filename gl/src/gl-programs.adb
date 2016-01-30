@@ -10,6 +10,7 @@ package body GL.Programs is
       P := Program (glCreateProgram.all);
       return P;
    end;
+
    procedure Link (P : Program) is
    begin
       glLinkProgram (GLuint (P));
