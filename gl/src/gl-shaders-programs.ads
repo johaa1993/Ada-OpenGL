@@ -1,13 +1,10 @@
-with GL.C;
-
-package GL.Programs is
-
-   use GL.C;
+package GL.Shaders.Programs is
 
    type Program (<>) is private;
 
    function Create return Program;
-   procedure Link (P : Program);
+   procedure Link (Item : Program);
+   procedure Attach (Item : Program; Accessory : Shader_Name);
 
 private
 

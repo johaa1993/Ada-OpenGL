@@ -1,7 +1,8 @@
 with GL.C.Complete;
 with GL.C.Initializations;
-with GL.Programs.Shaders;
-with GL.Programs.Shaders.Files;
+with GL.Shaders;
+with GL.Shaders.Programs;
+with GL.Shaders.Programs.Files;
 
 with GLFW.Displays;
 with GLFW.Displays.Windows;
@@ -59,20 +60,17 @@ begin
       declare
          use Ada.Text_IO;
          use Ada.Exceptions;
-         use GL.Programs;
-         use GL.Programs.Shaders;
-         use GL.Programs.Shaders.Files;
+         use GL.Shaders;
+         use GL.Shaders.Programs;
+         use GL.Shaders.Programs.Files;
          P : Program := Create;
-         S : Shader := Create (Vertex_Shade);
-         F : File_Name := "test.glfs";
       begin
-         Compile (S, F);
-         Attach (P, S);
+         Attach (P, Vertex_Type, "test.glfs");
       exception
          when Error : others =>
-            Put_Line ("Exception:");
+            Put_Line ("Exception:.");
             Put_Line (Exception_Information (Error));
-            Put_Line (String (Compile_Log (S)));
+            --Put_Line (String (Get_Compile_Log (S)));
       end;
 
    end;
