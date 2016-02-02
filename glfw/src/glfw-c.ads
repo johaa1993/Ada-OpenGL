@@ -3,7 +3,7 @@ with System.Storage_Elements;
 with Interfaces.C;
 with Interfaces.C.Strings;
 
-package GLFW is
+package GLFW.C is
 
    use System;
    use System.Storage_Elements;
