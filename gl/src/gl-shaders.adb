@@ -1,4 +1,4 @@
-
+with Ada.Text_IO;
 with Interfaces;
 with Interfaces.C;
 with Interfaces.C.Strings;
@@ -69,13 +69,23 @@ package body GL.Shaders is
       return R = GL_TRUE;
    end;
 
-   function Get_Shade (Item : Shader_Name) return Shader_Type is
+   function Get_Type (Item : Shader_Name) return Shader_Type is
       use type GLint;
       Result : aliased GLint;
    begin
       Get_Info (Item, Type_Info, Result'Access);
       return Shader_Type'Enum_Val (Result);
    end;
+
+   function Get_Source_Length (Item : Shader_Name) return Natural is
+      use type GLint;
+      Result : aliased GLint;
+   begin
+      Get_Info (Item, Source_Length_Info, Result'Access);
+      Ada.Text_IO.Put_Line ("L: " & Result'Img);
+      return Natural (Result);
+   end;
+
 
    procedure Get_Compile_Log (Item : Shader_Name; Message : out Compile_Log; Count : out Natural) is
       use Interfaces.C;
@@ -102,10 +112,12 @@ package body GL.Shaders is
       use Interfaces.C.Strings;
       C_Content : aliased char_array := To_C (String (Source));
       C_Content_Array : GLstringv (1 .. 1);
-      C_Length_Array   : GLintv (1 .. 1);
+      C_Length_Array : GLintv (1 .. 1);
    begin
+      -- Array of pointers to strings containing the source code to be loaded into the shader.
       C_Content_Array (1) := To_Chars_Ptr (C_Content'Unrestricted_Access);
-      C_Length_Array (1) := C_Content'Length;
+      -- The null character is not counted as part of the string length.
+      C_Length_Array (1) := Source'Length;
       glShaderSource (GLuint (Item), 1, C_Content_Array, C_Length_Array);
    end;
 
